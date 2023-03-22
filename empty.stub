@@ -5,6 +5,8 @@ A simple brainstorming space, powered by the github frontend, a github action, a
 For people who don't mind sharing their ideas or their brainstorming process publicly.  
 Remember: there are no bad ideas in brainstorming.
 
+**What it looks like in action:** https://github.com/dmarx/bench-warmers  
+
 ## How To Use
 
 1. Follow the setup instructions below build your own workbench.
@@ -17,8 +19,6 @@ The generated `README.md` will contain a Table of Contents for your ideas, and s
 * Customized tags
 * An "estimated idea maturity" metric (it's just a wordcount).
 
-
-**What it looks like in action:** https://github.com/dmarx/bench-warmers  
 **How the README builds itself:**  https://stackoverflow.com/a/72918091/819544  
 
 # Setup your own
