@@ -22,10 +22,10 @@ Remember: there are no bad ideas in brainstorming.
 
 # Usage
 
-1. Select `Add File > Create New File` to add a new markdown file containing the idea you want to log.
+1. Select `Add File > Create New File` to add a new markdown file containing the idea you want to log. Let's call this an "article".
 2. Upon committing, a github action runs which builds the README, which is customizable from a template.
 
-The generated `README.md` will contain a Table of Contents for your ideas, and supports the following features:
+The generated `README.md` will contain a Table of Contents of your articles, and supports the following features:
 
 * Infers modification date from commit history
 * Sort most recently modified ideas at the top
@@ -34,17 +34,24 @@ The generated `README.md` will contain a Table of Contents for your ideas, and s
 * Custom tagging
 * Wikipedia-esque "category" pages which group articles by tag
 
-## Rules
+### Rules to keep stuff from breaking
 
-1. markdown filenames contain no whitespace
-2. the first line (title) starts with a single 'pound' character). 
+1. article filenames contain no whitespace and use the `.md` suffix
+2. the first line of a markdown article you want added to the README TOC starts with a single 'pound' character (i.e. defines an H1 element for the document title).
 3. use `lightgrey` badges to add a tag to an idea. Yes, this is begging for a simpler approach.
 
 If you don't like these rules, I welcome PRs ;)
 
 
-# Technical details
+# FAQ
 
+### I added a markdown file and nothing changed
 
-**How the README builds itself:**  https://stackoverflow.com/a/72918091/819544  
+It takes a few seconds for the workflow that updates the README to run. Try waiting a few minutes and refreshing the page. 
 
+If you get impatient, click on the "Actions" tab and make sure there's an entry associated with your most recent commit 
+with a green check mark next to it. A red X means something went wrong, a yellow circle means the workflow is still running.
+
+### How does the README build itself?
+
+Discussion here: https://stackoverflow.com/a/72918091/819544
