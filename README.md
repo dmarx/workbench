@@ -1,11 +1,21 @@
-# My Bench Projects!
+# workbench
 
-You've found my brainstorming space!
+A simple brainstorming space, powered by the github frontend, a github action, and a simple python script.
 
-via: https://github.com/dmarx/workbench
+**How it works:**  https://stackoverflow.com/a/72918091/819544  
+**What it looks like in action:** https://github.com/dmarx/bench-warmers  
 
-|last_modified|title|est. idea maturity|tags
-|:---|:---|---:|:---|
-|2023-03-21|[This is the title that appears in test.md](test.md)|444|![](https://img.shields.io/badge/tag-anothertag-84f8cf) ![](https://img.shields.io/badge/tag-sometag-c5d714)|
+# Setup your own
 
-![](https://img.shields.io/badge/tag-sometag-c5d714) ![](https://img.shields.io/badge/tag-anothertag-84f8cf)
+1. Fork this repository
+2. Set "write" access on your `${{ secrets.GITHUB_TOKEN }}`,[instructions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#configuring-the-default-github_token-permissions) here.
+3. Change the name of README.stub.template to README.stub
+4. Author markdown files
+
+# Rules
+
+1. markdown filenames contain no whitespace
+2. the first line (title) starts with a single 'pound' character). 
+3. use `lightgrey` badges to add a tag to an idea. Yes, this is begging for a simpler approach.
+
+If you don't like these rules, I welcome PRs ;)
