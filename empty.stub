@@ -8,7 +8,7 @@ A simple brainstorming space, powered by the github frontend, a github action, a
 # Setup your own
 
 1. Fork this repository
-2. Configure a `${{ secrets.GITHUB_TOKEN }}`
+2. Configure a `${{ secrets.GITHUB_TOKEN }}`. Instructions here, it's just a few clicks: https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository
 3. Change the name of README.stub.template to README.stub
 4. Author markdown files
 
