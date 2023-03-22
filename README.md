@@ -1,39 +1,11 @@
-# Workbench
+# My Bench Projects!
 
-![Stable Diffusion illustration of a wizard's cluttered workshop](193496338_surrealist__illustration_of_a_workbench_cluttered_with_colorful_objects_and_items_representing_the_u.png)
+You've found my brainstorming space!
 
-A simple brainstorming space, powered by the github frontend, a github action, and a simple python script.
+via: https://github.com/dmarx/workbench
 
-For people who don't mind sharing their ideas or their brainstorming process publicly.  
-Remember: there are no bad ideas in brainstorming.
+|last_modified|title|est. idea maturity|tags
+|:---|:---|---:|:---|
+|2023-03-21|[This is the title that appears in test.md](test.md)|444|[![](https://img.shields.io/badge/tag-anothertag-c5d714)](tags/anothertag.md) [![](https://img.shields.io/badge/tag-sometag-84f8cf)](tags/sometag.md)|
 
-**What it looks like in action:** https://github.com/dmarx/bench-warmers  
-
-## How To Use
-
-1. Follow the setup instructions below to build your own workbench.
-2. Select `Add File > Create New File` to add a new markdown file containing the idea you want to log.
-3. Upon committing, a github action runs which builds the README, which is customizable from a template.
-
-The generated `README.md` will contain a Table of Contents for your ideas, and supports the following features:
-
-* Sorting the most recently modified ideas at the top
-* Customized tags
-* An "estimated idea maturity" metric (it's just a wordcount).
-
-**How the README builds itself:**  https://stackoverflow.com/a/72918091/819544  
-
-# Setup your own
-
-1. Fork this repository
-2. Set "write" access on your `${{ secrets.GITHUB_TOKEN }}`, [instructions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#configuring-the-default-github_token-permissions) here.
-3. Change the name of README.stub.template to README.stub
-4. Author markdown files
-
-# Rules
-
-1. markdown filenames contain no whitespace
-2. the first line (title) starts with a single 'pound' character). 
-3. use `lightgrey` badges to add a tag to an idea. Yes, this is begging for a simpler approach.
-
-If you don't like these rules, I welcome PRs ;)
+[![](https://img.shields.io/badge/tag-anothertag-c5d714)](tags/anothertag.md) [![](https://img.shields.io/badge/tag-sometag-84f8cf)](tags/sometag.md)
