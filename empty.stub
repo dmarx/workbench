@@ -16,5 +16,6 @@ A simple brainstorming space, powered by the github frontend, a github action, a
 
 1. markdown filenames contain no whitespace
 2. the first line (title) starts with a single 'pound' character). 
+3. use grey badges to add a tag/category to an idea. Yes, this is beginning for a simpler approach.
 
-if you don't like these rules, I welcome PRs ;)
+If you don't like these rules, I welcome PRs ;)
