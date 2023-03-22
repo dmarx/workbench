@@ -33,10 +33,10 @@ jobs:
           git add README.md
           # Thanks for the trick, ChatGPT!
           if git diff-index --quiet HEAD --; then
-            echo "::set-output name=changes::false"
+            echo "changes=false" >> $GITHUB_OUTPUT
           else
             git commit -m "Updated TOC"
-            echo "::set-output name=changes::true"
+            echo "changes=true" >> $GITHUB_OUTPUT
           fi
       - name: Push changes # push the output folder to your repo
         if: ${{ steps.commit.outputs.changes == 'true' }}
