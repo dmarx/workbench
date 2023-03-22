@@ -11,7 +11,7 @@ Remember: there are no bad ideas in brainstorming.
 
 ## How To Use
 
-1. Follow the setup instructions below build your own workbench.
+1. Follow the setup instructions below to build your own workbench.
 2. Select `Add File > Create New File` to add a new markdown file containing the idea you want to log.
 3. Upon committing, a github action runs which builds the README, which is customizable from a template.
 
