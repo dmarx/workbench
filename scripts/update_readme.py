@@ -2,6 +2,7 @@ from pathlib import Path
 import random
 import re
 import subprocess
+from collections import defaultdict
 
 random.seed(0)
 
@@ -26,11 +27,8 @@ def badges2kv(text):
 
 
 def make_badge(label, prefix='tag', color='lightgrey'):
-    return f"![](https://img.shields.io/badge/{prefix}-{label}-{color})"
-
-
-#def make_badges(unq_tags, sep=' '):
-#    return sep.join([make_badge(tag) for tag in unq_tags])
+    #return f"![](https://img.shields.io/badge/{prefix}-{label}-{color})"
+    return f"[![](https://img.shields.io/badge/{prefix}-{label}-{color})](tags/{label}.md)"
 
 
 def random_hex_color():
@@ -42,7 +40,7 @@ def random_hex_color():
 
 md_files = Path('.').glob('*.md')
 TOC = []
-unq_tags = set()
+unq_tags = defaultdict(list)
 for fpath in list(md_files):
     if fpath.name == 'README.md':
         continue
@@ -57,7 +55,9 @@ for fpath in list(md_files):
             d_['n_char'] = len(text)
             d_['tags'] = [v for k,v in badge_meta if k =='tag']
             d_['tags'].sort()
-            unq_tags.update(d_['tags'])
+            #unq_tags.update(d_['tags'])
+            for tag in d_['tags']:
+                unq_tags[tag].append(d_)
             TOC.append(d_)
 
 tag_badges_map = {tag_name:make_badge(label=tag_name, color = random_hex_color()) for tag_name in unq_tags}
@@ -74,24 +74,19 @@ header= "|last_modified|title|est. idea maturity|tags\n|:---|:---|---:|:---|\n"
 recs = [f"|{d['last_modified']}|[{d['title']}]({url_root}{d['fpath']})|{d['n_char']}|{make_badges(d['tags'])}|" for d in TOC]
 toc_str= header + '\n'.join(recs)
 
-#readme_stub = "# title \n\n text goes here\n\n{TOC}\n\n# another section"
-
-readme = None
-if Path('README.stub').exists():
-    with open('README.stub') as f:
-        readme_stub = f.read()
-    readme = readme_stub.replace('{TOC}', toc_str)
-    readme = readme.replace('{tags}', make_badges(unq_tags))
-    readme = readme.strip()
-if not readme:
-    with open('empty.stub') as f:
-        readme = f.read()
-
-# In case anyone wants this...
-#if Path('README.md').exists:
-#    if readme == Path('README.md').read():
-#        print("Nothing changed. Exiting w/o updating README.md")
-#        exit()
+with open('README.stub') as f:
+    readme_stub = f.read()
+readme = readme_stub.replace('{TOC}', toc_str)
+readme = readme.replace('{tags}', make_badges(unq_tags))
 
 with open('README.md','w') as f:
     f.write(readme)
+    
+Path("tags").mkdir(exist_ok=True)
+for tag, pages in unq_tags.items():
+    pages = sorted(pages, key=lambda x:x['last_modified'])[::-1]
+    recs = [f"|{d['last_modified']}|[{d['title']}]({url_root}{d['fpath']})|{d['n_char']}|{make_badges(d['tags'])}|" for d in pages]
+    with open(f"tags/{tag}.md", 'w') as f:
+        page_str = f"# Pages tagged `{tag}`\n\n"
+        page_str += header + '\n'.join(recs)
+        f.write(page_str)
