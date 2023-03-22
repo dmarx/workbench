@@ -27,7 +27,8 @@ jobs:
         run: python scripts/update_readme.py
       - name: Commit files
         run: |
-          # git config --local user.name "dmarx"
+          git config --local user.name "Github Action"
+          git config --local user.email "action@github.com"
           git add README.md
           git commit -m "Updated TOC"
       - name: Push changes # push the output folder to your repo
