@@ -24,7 +24,7 @@ The generated `README.md` will contain a Table of Contents for your ideas, and s
 # Setup your own
 
 1. Fork this repository
-2. Set "write" access on your `${{ secrets.GITHUB_TOKEN }}`,[instructions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#configuring-the-default-github_token-permissions) here.
+2. Set "write" access on your `${{ secrets.GITHUB_TOKEN }}`, [instructions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#configuring-the-default-github_token-permissions) here.
 3. Change the name of README.stub.template to README.stub
 4. Author markdown files
 
