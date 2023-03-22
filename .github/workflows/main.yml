@@ -32,6 +32,7 @@ jobs:
           git add README.md
           git commit -m "Updated TOC"
       - name: Push changes # push the output folder to your repo
+        if: ${{ success() }} # skip this step if there was nothing to commit
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
