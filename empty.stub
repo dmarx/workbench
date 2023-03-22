@@ -1,9 +1,25 @@
-# workbench
+# Workbench
 
 A simple brainstorming space, powered by the github frontend, a github action, and a simple python script.
 
-**How it works:**  https://stackoverflow.com/a/72918091/819544  
+For people who don't mind sharing their ideas or their brainstorming process publicly.  
+Remember: there are no bad ideas in brainstorming.
+
+## How To Use
+
+1. Follow the setup instructions below build your own workbench.
+2. Select `Add File > Create New File` to add a new markdown file containing the idea you want to log.
+3. Upon committing, a github action runs which builds the README, which is customizable from a template.
+
+The generated `README.md` will contain a Table of Contents for your ideas, and supports the following features:
+
+* Sorting the most recently modified ideas at the top
+* Customized tags
+* An "estimated idea maturity" metric (it's just a wordcount).
+
+
 **What it looks like in action:** https://github.com/dmarx/bench-warmers  
+**How the README builds itself:**  https://stackoverflow.com/a/72918091/819544  
 
 # Setup your own
 
