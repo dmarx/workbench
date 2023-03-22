@@ -74,10 +74,16 @@ header= "|last_modified|title|est. idea maturity|tags\n|:---|:---|---:|:---|\n"
 recs = [f"|{d['last_modified']}|[{d['title']}]({url_root}{d['fpath']})|{d['n_char']}|{make_badges(d['tags'])}|" for d in TOC]
 toc_str= header + '\n'.join(recs)
 
-with open('README.stub') as f:
-    readme_stub = f.read()
-readme = readme_stub.replace('{TOC}', toc_str)
-readme = readme.replace('{tags}', make_badges(unq_tags))
+readme = None
+if Path('README.stub').exists():
+    with open('README.stub') as f:
+        readme_stub = f.read()
+    readme = readme_stub.replace('{TOC}', toc_str)
+    readme = readme.replace('{tags}', make_badges(unq_tags))
+    readme = readme.strip()
+if not readme:
+    with open('empty.stub') as f:
+        readme = f.read()
 
 with open('README.md','w') as f:
     f.write(readme)
