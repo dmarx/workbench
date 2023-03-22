@@ -6,8 +6,10 @@ from collections import defaultdict
 
 random.seed(0)
 
-def get_last_modified_date(fpath, verbose=True):
+def get_last_modified_date(fpath, verbose=True, timestamp=False):
     cmd = "git log -n 1 --pretty=format:%as --".split( )
+    if timestamp:
+        cmd = "git log -n 1 --pretty=format:%at --".split( )
     cmd += [str(fpath)]
     if verbose:
         print(cmd)
@@ -52,6 +54,7 @@ for fpath in list(md_files):
             d_ = {'fpath':fpath}
             d_['title'] = header[2:].strip()
             d_['last_modified'] = get_last_modified_date(fpath)
+            d_['last_modified_ts'] = get_last_modified_date(fpath, timestamp=True)
             d_['n_char'] = len(text)
             d_['tags'] = [v for k,v in badge_meta if k =='tag']
             d_['tags'].sort()
@@ -66,7 +69,7 @@ def make_badges(unq_tags, sep=' '):
     return sep.join([tag_badges_map[tag] for tag in unq_tags])
     
     
-TOC = sorted(TOC, key=lambda x:x['last_modified'])[::-1]
+TOC = sorted(TOC, key=lambda x:x['last_modified_ts'])[::-1]
 
 header= "|last_modified|title|est. idea maturity|tags\n|:---|:---|---:|:---|\n"
 recs = [f"|{d['last_modified']}|[{d['title']}]({ Path('.')/d['fpath'] })|{d['n_char']}|{make_badges(d['tags'])}|" for d in TOC]
@@ -95,7 +98,7 @@ def make_badges(unq_tags, sep=' '):
     
 Path("tags").mkdir(exist_ok=True)
 for tag, pages in unq_tags.items():
-    pages = sorted(pages, key=lambda x:x['last_modified'])[::-1]
+    pages = sorted(pages, key=lambda x:x['last_modified_ts'])[::-1]
     recs = [f"|{d['last_modified']}|[{d['title']}]({ Path('..')/d['fpath'] })|{d['n_char']}|{make_badges(d['tags'])}|" for d in pages]
     with open(f"tags/{tag}.md", 'w') as f:
         page_str = f"# Pages tagged `{tag}`\n\n"
