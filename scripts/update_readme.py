@@ -87,5 +87,11 @@ if not readme:
     with open('empty.stub') as f:
         readme = f.read()
 
+# In case anyone wants this...
+#if Path('README.md').exists:
+#    if readme == Path('README.md').read():
+#        print("Nothing changed. Exiting w/o updating README.md")
+#        exit()
+
 with open('README.md','w') as f:
     f.write(readme)
