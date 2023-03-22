@@ -68,8 +68,6 @@ def make_badges(unq_tags, sep=' '):
     
 TOC = sorted(TOC, key=lambda x:x['last_modified'])[::-1]
 
-url_root = '' # "https://github.com/dmarx/bench-warmers/blob/main/"
-
 header= "|last_modified|title|est. idea maturity|tags\n|:---|:---|---:|:---|\n"
 recs = [f"|{d['last_modified']}|[{d['title']}]({url_root}{d['fpath']})|{d['n_char']}|{make_badges(d['tags'])}|" for d in TOC]
 toc_str= header + '\n'.join(recs)
@@ -98,7 +96,7 @@ def make_badges(unq_tags, sep=' '):
 Path("tags").mkdir(exist_ok=True)
 for tag, pages in unq_tags.items():
     pages = sorted(pages, key=lambda x:x['last_modified'])[::-1]
-    recs = [f"|{d['last_modified']}|[{d['title']}]({url_root}{d['fpath']})|{d['n_char']}|{make_badges(d['tags'])}|" for d in pages]
+    recs = [f"|{d['last_modified']}|[{d['title']}]({ Path('..')/d['fpath'] })|{d['n_char']}|{make_badges(d['tags'])}|" for d in pages]
     with open(f"tags/{tag}.md", 'w') as f:
         page_str = f"# Pages tagged `{tag}`\n\n"
         page_str += header + '\n'.join(recs)
