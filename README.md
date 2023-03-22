@@ -6,6 +6,6 @@ via: https://github.com/dmarx/workbench
 
 |last_modified|title|est. idea maturity|tags
 |:---|:---|---:|:---|
-|2023-03-21|[This is the title that appears in test.md](test.md)|157|![](https://img.shields.io/badge/tag-anothertag-c5d714) ![](https://img.shields.io/badge/tag-sometag-84f8cf)|
+|2023-03-21|[This is the title that appears in test.md](test.md)|161|![](https://img.shields.io/badge/tag-anothertag-84f8cf) ![](https://img.shields.io/badge/tag-sometag-c5d714)|
 
-![](https://img.shields.io/badge/tag-anothertag-c5d714) ![](https://img.shields.io/badge/tag-sometag-84f8cf)
+![](https://img.shields.io/badge/tag-sometag-c5d714) ![](https://img.shields.io/badge/tag-anothertag-84f8cf)
