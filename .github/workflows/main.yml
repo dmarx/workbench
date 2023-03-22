@@ -26,13 +26,20 @@ jobs:
       - name: Run a one-line script
         run: python scripts/update_readme.py
       - name: Commit files
+        #if: "! git status --short" # check if there are changes to commit
         run: |
           git config --local user.name "Github Action"
           git config --local user.email "action@github.com"
           git add README.md
-          git commit -m "Updated TOC"
+          # Thanks for the trick, ChatGPT!
+          if git diff-index --quiet HEAD --; then
+            echo "::set-output name=changes::false"
+          else
+            git commit -m "Updated TOC"
+            echo "::set-output name=changes::true"
+          fi
       - name: Push changes # push the output folder to your repo
-        if: ${{ success() }} # skip this step if there was nothing to commit
+        if: ${{ steps.commit.outputs.changes == 'true' }}
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
