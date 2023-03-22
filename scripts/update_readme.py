@@ -26,9 +26,9 @@ def badges2kv(text):
     return [(b.split('-')[0], b.split('-')[1]) for b in badges]
 
 
-def make_badge(label, prefix='tag', color='lightgrey'):
+def make_badge(label, prefix='tag', color='lightgrey', root='.'):
     #return f"![](https://img.shields.io/badge/{prefix}-{label}-{color})"
-    return f"[![](https://img.shields.io/badge/{prefix}-{label}-{color})](tags/{label}.md)"
+    return f"[![](https://img.shields.io/badge/{prefix}-{label}-{color})]({root}/tags/{label}.md)"
 
 
 def random_hex_color():
@@ -87,6 +87,13 @@ if not readme:
 
 with open('README.md','w') as f:
     f.write(readme)
+    
+    
+# overriding it this way is ugly but whatever
+tag_badges_map = {tag_name:make_badge(label=tag_name, color = random_hex_color(), root='..') for tag_name in unq_tags}
+def make_badges(unq_tags, sep=' '):
+    return sep.join([tag_badges_map[tag] for tag in unq_tags])
+    
     
 Path("tags").mkdir(exist_ok=True)
 for tag, pages in unq_tags.items():
