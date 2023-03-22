@@ -69,7 +69,7 @@ def make_badges(unq_tags, sep=' '):
 TOC = sorted(TOC, key=lambda x:x['last_modified'])[::-1]
 
 header= "|last_modified|title|est. idea maturity|tags\n|:---|:---|---:|:---|\n"
-recs = [f"|{d['last_modified']}|[{d['title']}]({url_root}{d['fpath']})|{d['n_char']}|{make_badges(d['tags'])}|" for d in TOC]
+recs = [f"|{d['last_modified']}|[{d['title']}]({ Path('.')/d['fpath'] })|{d['n_char']}|{make_badges(d['tags'])}|" for d in TOC]
 toc_str= header + '\n'.join(recs)
 
 readme = None
