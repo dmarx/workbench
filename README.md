@@ -55,7 +55,3 @@ with a green check mark next to it. A red X means something went wrong, a yellow
 ### How does the README build itself?
 
 Discussion here: https://stackoverflow.com/a/72918091/819544
-
-# Related Projects
-
-* https://github.com/yihong0618/gitblog/
