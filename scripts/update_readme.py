@@ -24,7 +24,7 @@ def get_last_modified_date(fpath, timestamp=False):
 
 
 def badges2kv(text):
-    testpat = r'\/([a-zA-Z]+-[a-zA-Z]+-[a-zA-Z]+)'
+    testpat = r'\/([a-zA-Z]+-[a-zA-Z_]+-[a-zA-Z]+)'
 
     badges = re.findall(testpat, text)
     #return {b.split('-')[0]:b.split('-')[1] for b in badges}
